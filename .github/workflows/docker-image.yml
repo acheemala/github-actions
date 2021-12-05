@@ -54,7 +54,10 @@ jobs:
         with:
           # Version of helm
           version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
+<<<<<<< HEAD
 
+=======
+>>>>>>> d70d6470a8d0630300d7a67e893c6c6e8a614bed
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -64,4 +67,8 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
+<<<<<<< HEAD
         uses: aws-actions/amazon-ecr-login@v1
+=======
+        uses: aws-actions/amazon-ecr-login@v1
+>>>>>>> d70d6470a8d0630300d7a67e893c6c6e8a614bed
