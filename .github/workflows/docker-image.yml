@@ -37,3 +37,20 @@ jobs:
         echo "Pushing image to ECR..."
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+  build:
+    env:
+      HELM_EXPERIMENTAL_OCI: 1 #enable OCI support
+      HELM_VERSION_TO_INSTALL: 3.5.0 # version of HEL to install
+      ECR_IMAGE: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    name: publish ecr
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout repo
+      
+      - name: install helm
+        uses: Azure/setup-helm@v1
+        with:
+          # Version of helm
+          version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
