@@ -3,8 +3,6 @@ on:
     branches: [ master ]
   pull_request:
 
-jobs:
-
 name: Node Project `node-js-app` CI on ECR
 
 jobs:
