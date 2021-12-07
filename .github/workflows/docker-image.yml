@@ -71,4 +71,4 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          helm repo add ${{ secrets.ECR_HELM_REPO_NAME }} ${{ ECR_REGISTRY}} --username ${{ secrets.AWS_ACCESS_KEY_ID }} --password ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          helm repo add ${{ secrets.ECR_HELM_REPO_NAME }} ${{ env.ECR_REGISTRY }} --username ${{ secrets.AWS_ACCESS_KEY_ID }} --password ${{ secrets.AWS_SECRET_ACCESS_KEY }}
