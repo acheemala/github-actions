@@ -71,5 +71,17 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-         aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin "032669691391.dkr.ecr.ap-south-1.amazonaws.com"
+         helm creat ../../chart
+         rm -rf ../../chart/templates/*
+         cd ../../chart/templates
+         cat <<EOF > configmap.yaml
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: chart-configmap
+          data:
+            myvalue: "Hello World"
+          EOF
          helm package ../../chart
+         aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin "032669691391.dkr.ecr.ap-south-1.amazonaws.com"
+         
