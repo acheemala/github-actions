@@ -71,7 +71,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-         helm creat ../../chart
+         helm create ../../chart
          rm -rf ../../chart/templates/*
          cd ../../chart/templates
          cat <<EOF > configmap.yaml
