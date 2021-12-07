@@ -72,4 +72,4 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin "032669691391.dkr.ecr.ap-south-1.amazonaws.com"
-         helm package ../../chat
+         helm package ../../chart
