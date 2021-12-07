@@ -76,6 +76,4 @@ jobs:
          helm chart save ../../chart ${{ env.ECR_REGISTRY }}/chart:${{ env.VERSION }}
          helm chart list
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin "032669691391.dkr.ecr.ap-south-1.amazonaws.com"
-         pwd
-         ls -lrta chart-0.1.0.tgz
-         helm push chart-0.1.0.tgz oci://032669691391.dkr.ecr.ap-south-1.amazonaws.com    
+         helm chart push   ${{ env.ECR_REGISTRY }}/chart:${{ env.VERSION }} 
