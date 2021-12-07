@@ -74,4 +74,5 @@ jobs:
          helm create ../../chart
          helm package ../../chart
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin "032669691391.dkr.ecr.ap-south-1.amazonaws.com"
+         pwd
          helm chart push ../../chart-0.1.0.tgz oci://032669691391.dkr.ecr.ap-south-1.amazonaws.com/       
