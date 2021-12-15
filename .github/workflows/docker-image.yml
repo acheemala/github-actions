@@ -77,4 +77,4 @@ jobs:
          helm chart save chart ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}
          helm chart list
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
-         helm chart push   ${{ env.ECR_REGISTRY }}
+         helm chart push   ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}
