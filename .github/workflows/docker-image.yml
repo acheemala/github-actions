@@ -41,7 +41,6 @@ jobs:
     env:
       HELM_EXPERIMENTAL_OCI: 1 #enable OCI support
       HELM_VERSION_TO_INSTALL: 3.5.0 # version of HEL to install
-      ECR_IMAGE: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     name: publish ecr
     runs-on: ubuntu-latest
     needs: [deploy]
@@ -74,7 +73,7 @@ jobs:
          pwd
          ls -lrt
          IMAGE_TAG=${GITHUB_REF##*/}-${GITHUB_SHA}
-         helm chart save chart ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:${{ IMAGE_TAG }}
+         helm chart save chart ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:$IMAGE_TAG
          helm chart list
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
          helm chart push  ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:${{ IMAGE_TAG }}
