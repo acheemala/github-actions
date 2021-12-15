@@ -4,7 +4,6 @@ on:
   pull_request:
 
 name: Node Project `node-js-app` CI on ECR
-
 jobs:
   deploy:
     name: Deploy
