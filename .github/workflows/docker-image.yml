@@ -73,7 +73,8 @@ jobs:
         run: |
          pwd
          ls -lrt
-         helm chart save chart ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:0.1.0
+         IMAGE_TAG=${GITHUB_REF##*/}-${GITHUB_SHA}
+         helm chart save chart ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:${{ IMAGE_TAG }}
          helm chart list
          aws ecr get-login-password --region ap-south-1 | helm registry login  --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
-         helm chart push  ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:0.1.0
+         helm chart push  ${{ env.ECR_REGISTRY }}/${{ secrets.REPO_NAME }}:${{ IMAGE_TAG }}
