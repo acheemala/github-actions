@@ -12,6 +12,8 @@ jobs:
        run: |
           set -xeE -o pipefail
           sed -i 's/name: "hyper-project"/name: "hyper-acheem"/g' hello.txt > hello_1.txt
+          echo
+          ls -lrt
           cat "./hello_1.txt"
           cat "./hello.txt"
           echo
