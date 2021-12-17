@@ -10,4 +10,6 @@ jobs:
      - run: |
         echo "A initial message"
         echo "Another message or command"
+        cat "./hello.txt" | sed -e 's/name: "hyper-project"/name: "hyper-acheem"/g' > ./hello.txt
+        cat hello.txt
      - run: echo "One last message"
