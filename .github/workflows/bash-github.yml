@@ -11,7 +11,7 @@ jobs:
        shell: bash
        run: |
           set -xeE -o pipefail
-          cat hello.txt| sed -e `s/name: "hyper-project"/name: "hyper-acheem"`` > hello.txt
+          cat hello.txt| sed -e `s/name: \"hyper-project"/name: "hyper-acheem"` > hello.txt
           echo
           cat hello.txt
           echo
