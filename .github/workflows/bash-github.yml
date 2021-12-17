@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v1
-     - run: |
-        echo "A initial message"
-        echo "Another message or command"
-        cat "./hello.txt" | sed -e 's/name: "hyper-project"/name: "hyper-acheem"/g' > ./hello.txt
-        cat hello.txt
+     - name: Package Helm Chart
+       shell: bash
+       run: |
+          set -xeE -o pipefail
+          cat hello.txt
+          echo
      - run: echo "One last message"
