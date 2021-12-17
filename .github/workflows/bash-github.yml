@@ -13,6 +13,5 @@ jobs:
           set -xeE -o pipefail
           sed -i 's/name: "hyper-project"/name: "hyper-acheem"/g' hello.txt
           ls -lrt
-          cat "./hello.txt"
-          echo
+          
      - run: echo "One last message"
