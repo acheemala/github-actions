@@ -11,6 +11,8 @@ jobs:
        shell: bash
        run: |
           set -xeE -o pipefail
+          cat hello.txt| sed 's/name: "hyper-project"/name: "hyper-acheem"' > hello.txt
+          echo
           cat hello.txt
           echo
      - run: echo "One last message"
